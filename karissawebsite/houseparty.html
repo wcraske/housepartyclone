@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Background Website with Left-Side Popup</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .popup {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <video id="video" autoplay></video>
+
+  <div class="popup-container" id="popupContainer">
+    <div class="popup" id="popup">
+      <h1>Hi Karissa! click the link below<3 </h1>
+      <p>Where I asked you  <a href="https://www.google.com/maps/place/49%C2%B014'24.7%22N+123%C2%B007'46.3%22W/@49.2401944,-123.1295278,339m/data=!3m1!1e3!4m4!3m3!8m2!3d49.2401944!4d-123.1295278!5m1!1e4">out</a> </p>
+        <p>Where we first first hung <a href="https://www.google.com/maps/place/49%C2%B010'14.4%22N+122%C2%B034'32.9%22W/@49.170669,-122.5770107,172m/data=!3m2!1e3!4b1!4m13!1m8!3m7!1s0x5485d25963a8b77d:0x882a3bb279d0cc81!2sFort+Langley,+Langley+Twp,+BC!3b1!8m2!3d49.16837!4d-122.579975!16zL20vMDgzMjJy!3m3!8m2!3d49.170669!4d-122.575793!5m1!1e4">out</a> </p>
+          <p>our <a href="https://www.airbnb.ca/rooms/554482307665275377?adults=2&check_in=2022-06-21&check_out=2022-06-25&federated_search_id=b2ea7d3d-3df3-49ff-841b-0fcdd4f8e82b&source_impression_id=p3_1649397312_x5gUVx4vBLD6PkyB">portland</a> and our <a href='https://www.airbnb.ca/rooms/25977702?source_impression_id=p3_1655626009_MhJ%2BbydtwdQIs50X'> seattle</a> airbnb </p>
+    </div>
+  </div>
+
+  <div class="arrow" id="arrow">
+    <img src="arrow.png" alt="Arrow" width="50" height="50">
+  </div>
+
+  <script>
+    // Access the camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      const video = document.getElementById('video');
+      video.srcObject = stream;
+    })
+    .catch(error => {
+      console.error('Error accessing camera:', error);
+    });
+
+    // Add click event listener to the arrow
+    const arrow = document.getElementById('arrow');
+    const popupContainer = document.getElementById('popupContainer');
+
+    arrow.addEventListener('click', () => {
+      popupContainer.style.visibility = 'visible';
+      popupContainer.style.opacity = '1';
+    });
+
+    // Close the popup when clicked outside of it
+    popupContainer.addEventListener('click', (event) => {
+      if (event.target === popupContainer) {
+        popupContainer.style.visibility = 'hidden';
+        popupContainer.style.opacity = '0';
+      }
+    });
+  </script>
+</body>
+</html>
