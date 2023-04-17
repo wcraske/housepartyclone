@@ -6,10 +6,22 @@
     body {
       margin: 0;
       overflow: hidden;
-        background: url('housparty.png') center top fixed no-repeat;
+            background-image: url('housparty.png');
+            background-position: center;
+            background-attachment: fixed;
+            background-size: 200% 200%;
+         animation: fadeBackground 5s ease-in forwards;
+    }
+      @keyframes fadeBackground {
+      0% {
+        opacity: 0; /* Start with opacity 0 (fully transparent) */
+      }
+      100% {
+        opacity: 1; /* End with opacity 1 (fully opaque) */
+      }
     }
 
-    video {
+    .video {
       position: fixed;
       top: 0;
       left: 0;
@@ -17,7 +29,7 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-    }
+      }
 
     .popup-container {
       position: fixed;
@@ -54,15 +66,19 @@
           margin-bottom: 10px;
           
       }
+      
+     
      
   </style>
 </head>
 <body>
+
+    
   <video id="video" autoplay></video>
+    
 
   <div class="popup-container" id="popupContainer">
     <div class="popup" id="popup">
-    <img src="housparty.png" alt="hp">
       <h1>Hi Karissa! click the link below<3 </h1>
       <p>Where I asked you  <a href="https://www.google.com/maps/place/49%C2%B014'24.7%22N+123%C2%B007'46.3%22W/@49.2401944,-123.1295278,339m/data=!3m1!1e3!4m4!3m3!8m2!3d49.2401944!4d-123.1295278!5m1!1e4">out</a> </p>
         <p>Where we first first hung <a href="https://www.google.com/maps/place/49%C2%B010'14.4%22N+122%C2%B034'32.9%22W/@49.170669,-122.5770107,172m/data=!3m2!1e3!4b1!4m13!1m8!3m7!1s0x5485d25963a8b77d:0x882a3bb279d0cc81!2sFort+Langley,+Langley+Twp,+BC!3b1!8m2!3d49.16837!4d-122.579975!16zL20vMDgzMjJy!3m3!8m2!3d49.170669!4d-122.575793!5m1!1e4">out</a> </p>
